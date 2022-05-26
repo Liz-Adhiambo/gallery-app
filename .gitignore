@@ -1,0 +1,3 @@
+gallery-venv/
+*pyc
+lizgallery/settings.py
