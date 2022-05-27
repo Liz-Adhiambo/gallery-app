@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Image
+from .models import Category, Image
 
 def home(request):
     return render(request, 'landing.html')
@@ -12,5 +12,11 @@ def about(request):
 def gallery(request):
     images = Image.get_all_images()
     title = 'lizgalleria'
+    categories = Category.objects.all()
 
-    return render(request, 'gallery.html', {'title':title, 'images':images})
+    context = {}
+    context['categories'] = categories
+
+
+    return render(request, 'gallery.html', context)
+
