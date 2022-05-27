@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+{% block content %}
+{{block.super}}
+
+
+{% for image in images %}
+
+      <img src="{{image.squareImage.url}}">
+
+
+
+        
+    {% endfor  %}
+
+
+{% endblock  %}

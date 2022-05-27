@@ -86,6 +86,12 @@ class Image(models.Model):
     date_created = models.DateTimeField(blank=True, null=True)
     last_updated = models.DateTimeField(blank=True, null=True)
 
+    @classmethod
+    def get_all_images(cls):
+        images = cls.objects.all()
+        return images
+
+
     def __str__(self):
         return '{} {}'.format(self.category.title, self.uniqueId)
 
@@ -113,11 +119,7 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
 
-    @classmethod
-    def get_all_images(cls):
-        images = cls.objects.all()
-        return images
-
+    
 
     def __str__(self):
         return self.name

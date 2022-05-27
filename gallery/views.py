@@ -12,14 +12,29 @@ def about(request):
 
 def gallery(request):
     images = Image.get_all_images()
-    title = 'lizgalleria'
+
+    context1 = {}
+    context1['images'] = images
+
+
     categories = Category.objects.all()
 
     context = {}
     context['categories'] = categories
 
+   
 
-    return render(request, 'gallery.html', context)
+    return render(request, 'gallery.html', context )
+
+
+def allimages(request):
+    images = Image.objects.all()
+
+    context1 = {}
+    context1['images'] = images
+
+    return render(request, 'allimages.html', context1 )
+
 
 def categoryPage(request, slug):
 
@@ -33,3 +48,17 @@ def categoryPage(request, slug):
     context['category'] = category
 
     return render(request, 'category.html', context)
+
+
+def imageDetailPage(request, slug1, slug2):
+
+    category = Category.objects.get(slug=slug1)
+    image = Image.objects.get(slug=slug2)
+
+    context = {}
+    context['category'] = category
+    context['image'] = image
+
+    return render(request, 'image.html', context)
+
+
