@@ -11,3 +11,11 @@ class ImageTestClass(TestCase):
     # Testing  instance
     def test_instance(self):
         self.assertTrue(isinstance(self.image, Image))
+    # Testing Save Method
+    def test_save_method(self):
+        self.image.save_image()
+        images  = Image.objects.all()
+        self.assertTrue(len(images)>0)
+
+    def tearDown(self):
+        self.image.delete_image()
