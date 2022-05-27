@@ -61,4 +61,15 @@ def imageDetailPage(request, slug1, slug2):
 
     return render(request, 'image.html', context)
 
+def photo(request, slug):
+
+    image = Image.objects.get(slug=slug)
+
+    context = {}
+    
+    context['image'] = image
+
+    return render(request, 'photo.html', context)
+
+
 

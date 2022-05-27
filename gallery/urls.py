@@ -10,6 +10,7 @@ urlpatterns = [
     path('category/<slug:slug>', views.categoryPage, name='image-category'),
     path('category/<slug:slug1>/<slug:slug2>', views.imageDetailPage, name='image-detail'),
     path('images/', views.allimages, name='allimages'),
+    path('images/<slug:slug>', views.photo, name='photo'),
     
 ]
 
