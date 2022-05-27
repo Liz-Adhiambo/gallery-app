@@ -7,4 +7,20 @@ class Image(models.Model):
     photo = models.ImageField(upload_to = 'uploads/')
     description = models.TextField()
     
+
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
+
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+
+
+
 # Create your models here.
