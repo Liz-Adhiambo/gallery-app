@@ -7,11 +7,7 @@ from uuid import uuid4
 from django.urls import reverse
 
 class Location(models.Model):
-    title = models.CharField(max_length =50)
-    
-
-    
-
+    name = models.CharField(max_length =50)
 
     @classmethod
     def tag_articles(cls):
@@ -28,7 +24,14 @@ class Location(models.Model):
         self.name = update
         self.save()
 
-   
+    @classmethod
+    def get_location_id(cls, id):
+        locate = Location.objects.get(pk = id)
+        return locate
+
+    def __str__(self):
+        return self.name
+
 class Category(models.Model):
     title = models.CharField(null=True, blank=True, max_length=200)
 

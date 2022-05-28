@@ -1,4 +1,5 @@
 
+
 {%extends 'base.html'%}
 {% load static%}
 {% block content %}
@@ -37,8 +38,6 @@
   </div>
 </div>
 
-
-
 <main class="container">
   <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
@@ -62,25 +61,61 @@
       {% for image in images %}
       <div class="col">
         <div class="card shadow-sm">
-          
 
-          <img src="{{image.landImage.url}}" alt="{{image.altText}}">read more</a>
+        
+          
+          
+          <img src="{{image.landImage.url}}" alt="{{image.altText}}">
 
           <div class="card-body">
               <div class="btn-group">
                   <a href="{% url 'photo' slug=image.slug  %}"><button type="button" class="btn btn-sm btn-outline-secondary">Image Details</button></a>
                 </div>
-            
-            <div class="d-flex justify-content-between align-items-center">
-              
-              <small class="text-muted">{{image.date_created|date}}</small>
+                      <button type="button" class="btn btn-primary"
+              data-toggle="modal" data-target="#exampleModal">
+              Click to view modal
+          </button>
+          <!--Bootstrap modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1"
+              role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <!-- Modal heading -->
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">
+                              LizGalleria
+                          </h5>
+                          <button type="button" class="close"
+                              data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">
+                                  ×
+                              </span>
+                          </button>
+                      </div>
+                      <!-- Modal body with image -->
+                      <div class="modal-body">
+                        
+                        <img src="{{image.landImage.url}}"class="img-thumbnail">
+                    </div>
+                      
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+                  
+                  <div class="d-flex justify-content-between align-items-center">
+                    
+                    <small class="text-muted">{{image.date_created|date}}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
       {% endfor %}
       {% else %}
       <h2>No Images Uploaded for this category</h2>
       {% endif %}
+    </div>
 
+  </div>  
+  
 {% endblock %}
